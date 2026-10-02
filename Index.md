@@ -1,0 +1,1 @@
+Hey guys welcome to another video. We love Obsidian ! And are soft ware.
