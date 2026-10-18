@@ -210,11 +210,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "19773cedb528d702",
+  "active": "136c942008b03883",
   "lastOpenFiles": [
+    "Test Plans/Sim Test/index.md",
+    "Test Plans/Pool Test/index.md",
+    "Main MCU/MCU-to-Jetson.md",
     "README.md",
     "Index.md",
-    "Main MCU/MCU-to-Jetson.md",
     "Test Plans/Sim Test",
     "Test Plans/Pool Test",
     "okmr_auv/index.md",
