@@ -11,6 +11,10 @@ A shared [Obsidian](https://obsidian.md/) vault meant to keep club knowledge acc
 3. Open the `okmr_docs` folder in Obsidian.
 4. Explore!
 
+## Organization
+
+The repo is organized based on project, not based on teams. This is so that projects can be documented with the full information of the project, including Mechanical, Electrical, and Software.
+
 ### Support
 
 Support is available on our [Discord](https://discord.gg/xKxYd9Y7FC)
