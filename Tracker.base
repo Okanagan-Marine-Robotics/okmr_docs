@@ -1,0 +1,59 @@
+filters:
+  not:
+    - file.inFolder("_templates")
+views:
+  - type: table
+    name: Systems
+    filters:
+      and:
+        - 'type == "system"'
+    order:
+      - file.name
+      - status
+      - owner
+      - subteams
+      - rev
+      - updated
+  - type: table
+    name: Not integrated yet
+    filters:
+      and:
+        - 'type == "system"'
+        - 'status != "integrated"'
+        - 'status != "retired"'
+    order:
+      - file.name
+      - status
+      - owner
+  - type: table
+    name: Interfaces
+    filters:
+      and:
+        - 'type == "interface"'
+    order:
+      - file.name
+      - bus
+      - status
+      - owner
+      - updated
+  - type: table
+    name: Decisions
+    filters:
+      and:
+        - 'type == "decision"'
+    order:
+      - file.name
+      - status
+      - date
+      - systems
+  - type: table
+    name: Test reports
+    filters:
+      and:
+        - 'type == "test-report"'
+    order:
+      - file.name
+      - date
+      - system
+      - rev
+      - result
