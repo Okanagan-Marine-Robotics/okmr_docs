@@ -1,0 +1,52 @@
+name: AI intake
+
+# Drop PDFs, photos, .docx or notes into _inbox/ and push.
+# This sorts them into the vault with Gemini and opens a PR for review.
+
+on:
+  push:
+    paths:
+      - "_inbox/**"
+      - "!_inbox/README.md"
+      - "!_inbox/unsorted/**"
+  workflow_dispatch:   # Actions tab -> AI intake -> Run workflow: processes the whole inbox
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ai-intake-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  intake:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pandoc (for .docx)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq pandoc
+
+      - name: Sort inbox with Gemini
+        id: intake
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          SINCE: ${{ github.event_name == 'push' && github.event.before || '' }}
+        run: python3 .github/scripts/intake.py --pr-body "$RUNNER_TEMP/pr-body.md" ${SINCE:+--since "$SINCE"}
+
+      - name: Open PR
+        if: steps.intake.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: ai-intake/${{ github.run_id }}
+          base: ${{ github.ref_name }}
+          title: "AI intake: ${{ steps.intake.outputs.title }}"
+          commit-message: "AI intake: ${{ steps.intake.outputs.title }}"
+          body-path: ${{ runner.temp }}/pr-body.md
+          labels: ai-intake
+          delete-branch: true

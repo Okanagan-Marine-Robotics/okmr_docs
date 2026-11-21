@@ -11,6 +11,9 @@
 - Auto commit-and-sync interval: **0 (off)**. Auto-commits to a shared repo create noise and merge conflicts.
 - Pull before push: **on**
 
+## Don't want to write it up yourself?
+Drop your Google Doc (exported as PDF), photos, or notes into `_inbox/` and push. The **AI intake** workflow sorts them into the right pages and opens a PR. See [_inbox/README.md](_inbox/README.md). Whoever reviews that PR checks the numbers against the originals before merging.
+
 ## Where things go
 | You're writing… | Put it in | Template |
 | --------------- | --------- | -------- |
