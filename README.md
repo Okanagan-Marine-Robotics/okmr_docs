@@ -15,6 +15,17 @@ A shared [Obsidian](https://obsidian.md/) vault meant to keep club knowledge acc
 
 The repo is organized based on project, not based on teams. This is so that projects can be documented with the full information of the project, including Mechanical, Electrical, and Software.
 
+| Folder | What's in it |
+| ------ | ------------ |
+| `Architecture/` | Whole-sub block diagrams |
+| `Systems/` | One folder per board / subsystem / task |
+| `Interfaces/` | Specs for every link between systems (UART, CAN, Ethernet, pinouts) |
+| `Decisions/` | Numbered records of why we chose what we chose |
+| `Test Plans/` | Whole-sub test plans (pool, sim) |
+| `_templates/` | Page templates; insert with *Templates: Insert template* |
+
+Start at [Index.md](Index.md). See [CONTRIBUTING.md](CONTRIBUTING.md) for conventions.
+
 ### Support
 
 Support is available on our [Discord](https://discord.gg/xKxYd9Y7FC)
